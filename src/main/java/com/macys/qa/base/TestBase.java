@@ -9,10 +9,12 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import com.macys.qa.util.TestUtil;
+
 public class TestBase {
 
-	static WebDriver driver;
-	static Properties prop;
+	public static WebDriver driver;
+	public static Properties prop;
 	
 	
 	
@@ -36,27 +38,38 @@ public class TestBase {
 		if (BrowserName.equals("FireFoxdriver"));
 		System.setProperty("webdriver.gecko.driver", "C:\\Users\\seemal\\git\\Seleniumframwork\\SeleniumFramework\\Drivers\\geckodriver\\geckodriver.exe");
          driver = new FirefoxDriver();
-         }
+         
+
+         
+         driver.manage().window().maximize();
+         driver.manage().deleteAllCookies();
+         driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT,TimeUnit.SECONDS);
+         driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT,TimeUnit.SECONDS);
+         
+         driver.get(prop.getProperty("url"));
+         
+         
 	
-    Driver.manage().window().maximize();
-    Driver.manage().deleteAllCookies();
-    Driver.manage().timeouts().pageLoadTimeout(30,TimeUnit.SECONDS);
-    driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+   
+	}    
 }
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
